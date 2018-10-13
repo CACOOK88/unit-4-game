@@ -3,28 +3,41 @@ body {
 
 }
 
+/* Making sure there's blank space when no character tiles are present */
+.row {
+    height: 210px;
+}
+
+/* Heading Styles */
 h1 {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
     margin-bottom: 20px;
 }
-
-.playerChoice,
-.enemies,
-.defender {
-    /* border: 3px red solid; */
-}
-
 h3 {
     font-size: 30px;
     font-weight: bold;
 }
 
+/* Button Style */
+.attack-button {
+    font-size: 20px;
+    padding: 5px;
+    width: 100px;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 5px
+}
 
-
-
-
+/* classes to add when characters move to other rows */
+.hidden {
+    display: none;
+}
+.enemy {
+    background-color: #333;
+    border: 2px red solid;
+}
 
 .charTile {
     background: #ddd;
@@ -32,6 +45,7 @@ h3 {
     display: inline-block;
     text-align: center;
     border: 2px green solid;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
