@@ -13,7 +13,7 @@ var skywalker = {
     hp: 100,
     attackBase: 9,
     attack: 8,
-    counterAttack: 25,
+    counterAttack: 5,
     hpSelector: $("#skywalkerHP")
 }
 var sidious = {
@@ -22,13 +22,13 @@ var sidious = {
     hp: 150,
     attackBase: 9,
     attack: 8,
-    counterAttack: 25,
+    counterAttack: 20,
     hpSelector: $("#sidiousHP")
 }
 var maul = {
     name: "Darth Maul",
     id: "#maul",
-    hp: 100,
+    hp: 180,
     attackBase: 9,
     attack: 8,
     counterAttack: 25,
@@ -74,40 +74,32 @@ $(document).ready(function() {
         if ( $(".defenderRow").text().length == 0 ) {
             console.log("no enemy to attack");
         } else {
-            // defender hp decreased by player attack power
-            defender.hp = defender.hp - playerChoice.attack;
-            // update html text to new defender hp
-            $(defender.hpSelector).text(defender.hp);
-            if (defender.hp <=0) {
-                $(defender.id).detach();
-                alert("You defeated " + defender.name);
+
+            if (playerChoice.hp >= 0) {
+                // defender hp decreased by player attack power
+                defender.hp = defender.hp - playerChoice.attack;
+                // update html text to new defender hp
+                $(defender.hpSelector).text(defender.hp);
+                if (defender.hp <=0) {
+                    $(defender.id).remove();
+                    alert("You defeated " + defender.name);
+                }
             }
 
-            // player hp decreased by defender counter attack
-            playerChoice.hp = playerChoice.hp - defender.counterAttack;
-            // update html text to new player hp
-            $(playerChoice.hpSelector).text(playerChoice.hp);
+            // check if defender dies on player's attack. if defender died, no counter attack should be applied.
+            if (defender.hp >= 0) {
+                // player hp decreased by defender counter attack
+                playerChoice.hp = playerChoice.hp - defender.counterAttack;
+                // update html text to new player hp
+                $(playerChoice.hpSelector).text(playerChoice.hp);
+                if (playerChoice.hp <= 0) {
+                    $(playerChoice.id).remove();
+                    alert("You Died");
+                }
+            }
+            
             // increase player attack by basepower
-            if (playerChoice.hp <= 0) {
-                $(playerChoice.id).detach();
-                alert("You Died");
-            }
-
-
             playerChoice.attack = playerChoice.attack + playerChoice.attackBase; 
-
-
-            
-            
-            
-
-
-
-
-
-
-
-
 
         }
         console.log(playerChoice);
