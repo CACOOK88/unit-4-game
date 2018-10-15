@@ -1,44 +1,65 @@
+// **************************************************
+//
+//              OBJECT VARIABLES
+//
+// **************************************************                  
 var obiWan = {
     name: "Obi-Wan Kenobi",
-    id: "#obiWan",
     hp: 120,
-    attackBase: 9,
+    attackBase: 8,
     attack: 8,
-    counterAttack: 25,
-    hpSelector: $("#obiWanHP")
+    counterAttack: 10,
+    hpSelector: $("#obiWanHP"),
+    id: "#obiWan"
 }
 var skywalker = {
     name: "Luke Skywalker",
-    id: "#skywalker",
     hp: 100,
-    attackBase: 9,
-    attack: 8,
+    attackBase: 15,
+    attack: 15,
     counterAttack: 5,
-    hpSelector: $("#skywalkerHP")
+    hpSelector: $("#skywalkerHP"),
+    id: "#skywalker"
 }
 var sidious = {
     name: "Darth Sidious",
-    id: "#sidious",
     hp: 150,
-    attackBase: 9,
-    attack: 8,
+    attackBase: 15,
+    attack: 15,
     counterAttack: 20,
-    hpSelector: $("#sidiousHP")
+    hpSelector: $("#sidiousHP"),
+    id: "#sidious"
 }
 var maul = {
     name: "Darth Maul",
-    id: "#maul",
     hp: 180,
-    attackBase: 9,
-    attack: 8,
+    attackBase: 15,
+    attack: 15,
     counterAttack: 25,
-    hpSelector: $("#maulHP")
+    hpSelector: $("#maulHP"),
+    id: "#maul"
 }
-
+//  VARIABLES TO KEEP TRACK OF PLAYER AND DEFENDER SELECTIONS
 var playerChoice;
 var defender;
 
+// **************************************************
+//
+//              FUNCTIONS
+//
+// **************************************************  
 
+
+
+
+
+
+
+// **************************************************
+//
+//              GAMEPLAY
+//
+// **************************************************  
 $(document).ready(function() {
     // initially listen for click on a char tile
     $(".playerRow").on("click", ".choice", function(e) {
@@ -49,12 +70,11 @@ $(document).ready(function() {
         $(".choice").addClass("enemy").removeClass("choice").detach().appendTo(".enemyRow");
         // set playerChoice to object
         playerChoice = window[this.id];
-        console.log(playerChoice);
-
     });
 
     // listen for click on enemy tile
     $(".enemyRow").on("click", ".enemy", function(f) {
+        $("#result-text").empty();
         // only run code if defenderRow is empty. Keeps from 2 defenders being added
         if ( $(".defenderRow").children().length == 0 ) {
             // set variable to enemy clicked
@@ -82,7 +102,7 @@ $(document).ready(function() {
                 $(defender.hpSelector).text(defender.hp);
                 if (defender.hp <=0) {
                     $(defender.id).remove();
-                    alert("You defeated " + defender.name);
+                    $("#result-text").text("You defeated " + defender.name);
                 }
             }
 

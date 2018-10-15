@@ -5,7 +5,7 @@ body {
 
 /* Making sure there's blank space when no character tiles are present */
 .row {
-    height: 210px;
+    min-height: 210px;
 }
 
 /* Heading Styles */

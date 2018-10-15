@@ -12,6 +12,7 @@
 <body>
     <h1>Star Wars RPG!</h1>
     <div class="">
+        <h3>Your Character</h3>
         <div class="row playerRow">
             <!-- Character Tiles -->
             <div id="obiWan" class="char choice">
@@ -35,20 +36,26 @@
                 <p id="maulHP">180</p>
             </div>
         </div>
-        <h3>Your Character</h3>
     </div>
     <div class="">
+        <h3>Enemies Available to Attack</h3>
         <div class="row enemyRow"></div>
             <!-- Enemy Tiles after player chooses their player -->
         </div>    
-        <h3>Enemies Available to Attack</h3>
     </div>
-    <button class="attack-button">Attack</button>
+    <div>
+        <h3>Fight Section</h3>
+        <button class="attack-button">Attack</button>
+    </div>
+    
     <div class="">
+        <h3>Defender</h3>
         <div class="row defenderRow"></div>
             <!-- Defender Tile after player chooses enemy to fight -->
         </div>
-        <h3>Defender</h3>
+        <p id="attack-text"></p>
+        <p id="counter-text"></p>
+        <p id="result-text"></p>
     </div>
 
 
