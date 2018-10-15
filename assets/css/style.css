@@ -1,6 +1,6 @@
 body {
     background-image: url(../images/starwarsbg.jpg);
-
+    margin-left: 3%;
 }
 
 /* Making sure there's blank space when no character tiles are present */
@@ -19,37 +19,51 @@ h3 {
     font-size: 30px;
     font-weight: bold;
 }
-
 /* Button Style */
 .attack-button {
     font-size: 20px;
     padding: 5px;
     width: 100px;
     cursor: pointer;
-    background-color: #ccc;
-    border-radius: 5px
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin: 5px;
 }
-
-/* classes to add when characters move to other rows */
-.hidden {
-    display: none;
+/* Making sure images dont live outside their div */
+img {
+    width: 100%;
+    height: auto;
 }
-.enemy {
-    background-color: #333;
-    border: 2px red solid;
-}
-
-.charTile {
+/* Default character tile styling */
+.char {
     background: #ddd;
     width:225px;
     display: inline-block;
     text-align: center;
+    border-radius: 10px;
+    box-sizing: border-box; 
+}
+/* Character style before player choice */
+.choice {
+    border: 2px yellow solid;
+}
+/* Character style for Players character */
+.playerChoice {
     border: 2px green solid;
-    border-radius: 5px;
-    box-sizing: border-box;
+}
+/* Character style for enemies available row */
+.enemy {
+    background-color: #333;
+    color: white;
+    border: 2px red solid;
+}
+/* Character Style for Defender */
+.defender {
+    background-color: red;
+    border: 2px red solid;
 }
 
-.charTile img{
-    width: 100%;
-    height: auto;
+.hidden {
+    display: none;
 }
