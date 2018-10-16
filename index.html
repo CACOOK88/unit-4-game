@@ -12,6 +12,7 @@
 <body>
     <div class="header">
         <h1>Star Wars RPG!</h1>
+        <h2 class="game-over-text"></h2>
         <button class="button reset-button hidden">Reset</button>
     </div>    
     <div class="player-choice">
@@ -42,19 +43,20 @@
     </div>
     <div class="">
         <h3>Enemies Available to Attack</h3>
-        <div class="row enemyRow"></div>
+        <div class="row enemyRow">
             <!-- Enemy Tiles after player chooses their player -->
-        </div>    
+        </div> 
+        <!-- hidden div to hold dead char before reset -->
+        <div class="dead-char hidden"></div>   
     </div>
     <div>
         <h3>Fight Section</h3>
         <button class="button attack-button">Attack</button>
-        
     </div>
     
     <div class="">
         <h3>Defender</h3>
-        <div class="row defenderRow"></div>
+        <div class="row defenderRow">
             <!-- Defender Tile after player chooses enemy to fight -->
         </div>
         <p id="attack-text" class="battle-text"></p>
@@ -65,5 +67,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
+    <!-- <script src="assets/javascript/objecttext.js"></script> -->
 </body>
 </html>

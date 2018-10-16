@@ -10,6 +10,7 @@ var obiWan = {
     attack: 8,
     counterAttack: 10,
     hpSelector: $("#obiWanHP"),
+    hpBase: 120,
     id: "#obiWan"
 }
 var skywalker = {
@@ -19,6 +20,7 @@ var skywalker = {
     attack: 15,
     counterAttack: 5,
     hpSelector: $("#skywalkerHP"),
+    hpBase: 100,
     id: "#skywalker"
 }
 var sidious = {
@@ -28,6 +30,7 @@ var sidious = {
     attack: 15,
     counterAttack: 20,
     hpSelector: $("#sidiousHP"),
+    hpBase: 150,
     id: "#sidious"
 }
 var maul = {
@@ -37,6 +40,7 @@ var maul = {
     attack: 15,
     counterAttack: 25,
     hpSelector: $("#maulHP"),
+    hpBase: 180,
     id: "#maul"
 }
 //  VARIABLES TO KEEP TRACK OF PLAYER AND DEFENDER SELECTIONS
@@ -103,8 +107,8 @@ $(document).ready(function() {
                 $("#attack-text").text("You attacked "+ defender.name + " for " + playerChoice.attack + " damage!!");
                 // check if defender was killed
                 if (defender.hp <=0) {
-                    // remove defender tile if dead
-                    $(defender.id).remove();
+                    // remove defender tile if dead and put in hidden div
+                    $(defender.id).appendTo(".dead-char");
                     // update defeated text
                     $("#result-text").text("You defeated " + defender.name);
                     // clear attack and counter text
@@ -123,8 +127,8 @@ $(document).ready(function() {
                 $("#counter-text").text(defender.name + " attacked you for " + defender.counterAttack + " damage!!");
                 // check if player dies
                 if (playerChoice.hp <= 0) {
-                    // if player dies, remove char tile
-                    $(playerChoice.id).remove();
+                    // if player dies, remove char tile and put in hidden div
+                    $(playerChoice.id).appendTo(".dead-char");
                     // update defeated text
                     $("#result-text").text("You were defeated by " + defender.name);   
                     // clear attack and counter text
@@ -135,17 +139,13 @@ $(document).ready(function() {
             
             // check if all enemies are dead else if player is dead
             if ( $(".enemyRow").children().length == 0  &&  $(".defenderRow").children().length == 0) {
-                // create new div to hold win message
-                var winner = $("<h2>");
                 // update win text and make red, add to header
-                winner.text("You Have Defeated All Enemies!!!").css("color", "red").appendTo(".header");
+                $(".game-over-text").text("You Have Defeated All Enemies!!!").css("color", "red").appendTo(".header");
                 // show reset button
                 $(".reset-button").removeClass("hidden");
             } else if (playerChoice.hp <= 0) {
-                // create new div to hold loser message
-                var loser = $("<h2>");
                 // update new div with loss text, make red, add to header
-                loser.text("You Have Been Defeated By " + defender.name).css("color", "red").appendTo(".header");
+                $(".game-over-text").text("You Have Been Defeated By " + defender.name).css("color", "red").appendTo(".header");
                 // show reset button
                 $(".reset-button").removeClass("hidden");
             }
@@ -162,6 +162,11 @@ $(document).ready(function() {
     $(".header").on("click", ".reset-button", function() {
         // add in reset functionality
 
-        
+        // clear win and loss text
+        // hide reset button
+        // set default hp and attack power
+        // char and choice should be tile only classes
+        // append to player choice row
+
     });
 });
