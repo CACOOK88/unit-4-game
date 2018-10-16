@@ -7,28 +7,39 @@ body {
 .row {
     min-height: 210px;
 }
-
+.header {
+    text-align: center;
+}
 /* Heading Styles */
 h1 {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+}
+h2 {
+    font-size: 35px;
+    font-weight: bolder;
 }
 h3 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
 }
 /* Button Style */
-.attack-button {
+.button {
     font-size: 20px;
     padding: 5px;
     width: 100px;
     cursor: pointer;
     background-color: black;
     color: white;
+    border: 1px black solid;
     border-radius: 5px;
     margin: 5px;
+}
+.reset-button {
+    background: red;
+    border: red;
 }
 /* Making sure images dont live outside their div */
 img {
@@ -66,4 +77,10 @@ img {
 
 .hidden {
     display: none;
+}
+
+.battle-text {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 22px;
 }

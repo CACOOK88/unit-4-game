@@ -10,8 +10,11 @@
     
 </head>
 <body>
-    <h1>Star Wars RPG!</h1>
-    <div class="">
+    <div class="header">
+        <h1>Star Wars RPG!</h1>
+        <button class="button reset-button hidden">Reset</button>
+    </div>    
+    <div class="player-choice">
         <h3>Your Character</h3>
         <div class="row playerRow">
             <!-- Character Tiles -->
@@ -45,7 +48,8 @@
     </div>
     <div>
         <h3>Fight Section</h3>
-        <button class="attack-button">Attack</button>
+        <button class="button attack-button">Attack</button>
+        
     </div>
     
     <div class="">
@@ -53,9 +57,9 @@
         <div class="row defenderRow"></div>
             <!-- Defender Tile after player chooses enemy to fight -->
         </div>
-        <p id="attack-text"></p>
-        <p id="counter-text"></p>
-        <p id="result-text"></p>
+        <p id="attack-text" class="battle-text"></p>
+        <p id="counter-text" class="battle-text"></p>
+        <p id="result-text" class="battle-text"></p>
     </div>
 
 

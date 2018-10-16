@@ -84,7 +84,6 @@ $(document).ready(function() {
             enemyChoice.removeClass("enemy").addClass("defender").appendTo(".defenderRow");
             // set defender to clicked object
             defender = window[this.id]; 
-            console.log(defender);
         }
     });
 
@@ -100,9 +99,17 @@ $(document).ready(function() {
                 defender.hp = defender.hp - playerChoice.attack;
                 // update html text to new defender hp
                 $(defender.hpSelector).text(defender.hp);
+                // print attack message on screen
+                $("#attack-text").text("You attacked "+ defender.name + " for " + playerChoice.attack + " damage!!");
+                // check if defender was killed
                 if (defender.hp <=0) {
+                    // remove defender tile if dead
                     $(defender.id).remove();
+                    // update defeated text
                     $("#result-text").text("You defeated " + defender.name);
+                    // clear attack and counter text
+                    $("#attack-text").empty();
+                    $("#counter-text").empty();
                 }
             }
 
@@ -112,12 +119,37 @@ $(document).ready(function() {
                 playerChoice.hp = playerChoice.hp - defender.counterAttack;
                 // update html text to new player hp
                 $(playerChoice.hpSelector).text(playerChoice.hp);
+                // print counter attack message on screen
+                $("#counter-text").text(defender.name + " attacked you for " + defender.counterAttack + " damage!!");
+                // check if player dies
                 if (playerChoice.hp <= 0) {
+                    // if player dies, remove char tile
                     $(playerChoice.id).remove();
-                    alert("You Died");
+                    // update defeated text
+                    $("#result-text").text("You were defeated by " + defender.name);   
+                    // clear attack and counter text
+                    $("#attack-text").empty();
+                    $("#counter-text").empty();     
                 }
             }
             
+            // check if all enemies are dead else if player is dead
+            if ( $(".enemyRow").children().length == 0  &&  $(".defenderRow").children().length == 0) {
+                // create new div to hold win message
+                var winner = $("<h2>");
+                // update win text and make red, add to header
+                winner.text("You Have Defeated All Enemies!!!").css("color", "red").appendTo(".header");
+                // show reset button
+                $(".reset-button").removeClass("hidden");
+            } else if (playerChoice.hp <= 0) {
+                // create new div to hold loser message
+                var loser = $("<h2>");
+                // update new div with loss text, make red, add to header
+                loser.text("You Have Been Defeated By " + defender.name).css("color", "red").appendTo(".header");
+                // show reset button
+                $(".reset-button").removeClass("hidden");
+            }
+
             // increase player attack by basepower
             playerChoice.attack = playerChoice.attack + playerChoice.attackBase; 
 
@@ -125,5 +157,11 @@ $(document).ready(function() {
         console.log(playerChoice);
         console.log(defender);
     });
-});
 
+    // reset button
+    $(".header").on("click", ".reset-button", function() {
+        // add in reset functionality
+
+        
+    });
+});
