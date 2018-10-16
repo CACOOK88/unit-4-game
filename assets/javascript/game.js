@@ -67,6 +67,7 @@ var defender;
 $(document).ready(function() {
     // initially listen for click on a char tile
     $(".playerRow").on("click", ".choice", function(e) {
+        console.log(e);
         // remove choice class from selected player to make green border
         $("#"+e.currentTarget.id).removeClass("choice").addClass("playerChoice");
         // take remaining 3 characters and add enemy class to make red
@@ -88,14 +89,16 @@ $(document).ready(function() {
             enemyChoice.removeClass("enemy").addClass("defender").appendTo(".defenderRow");
             // set defender to clicked object
             defender = window[this.id]; 
+            $(".noEnemy").empty();
         }
     });
 
     // attack button listener
     $(".attack-button").on("click", function(e) {
         // if defender row is empty alert no enemy to attack
-        if ( $(".defenderRow").text().length == 0 ) {
+        if ( $(".defenderRow").children().length == 0 ) {
             console.log("no enemy to attack");
+            $(".noEnemy").text("Please Choose An Enemy To Fight");
         } else {
 
             if (playerChoice.hp >= 0) {
@@ -115,6 +118,8 @@ $(document).ready(function() {
                     $("#attack-text").empty();
                     $("#counter-text").empty();
                 }
+                // increase player attack by basepower
+                playerChoice.attack = playerChoice.attack + playerChoice.attackBase; 
             }
 
             // check if defender dies on player's attack. if defender died, no counter attack should be applied.
@@ -150,8 +155,7 @@ $(document).ready(function() {
                 $(".reset-button").removeClass("hidden");
             }
 
-            // increase player attack by basepower
-            playerChoice.attack = playerChoice.attack + playerChoice.attackBase; 
+            
 
         }
         console.log(playerChoice);
