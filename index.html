@@ -10,15 +10,17 @@
     
 </head>
 <body>
+    <!-- Header for title, game over and reset button -->
     <div class="header">
         <h1>Star Wars RPG!</h1>
         <h2 class="game-over-text"></h2>
         <button class="button reset-button hidden">Reset</button>
     </div>    
+    <!-- Row for player selection.  -->
     <div class="player-choice">
         <h3>Your Character</h3>
         <div class="row playerRow">
-            <!-- Character Tiles -->
+        <!-- Character Tiles -->
             <div id="obiWan" class="char choice">
                 Obi-Wan Kenobi
                 <img src="assets/images/obiwan.jpeg" alt="Obi-Wan Kenobi">
@@ -39,9 +41,11 @@
                 <img src="assets/images/maul.jpeg" alt="Darth Maul">
                 <p id="maulHP">180</p>
             </div>
+        <!-- End Character Tiles -->
         </div>
     </div>
-    <div class="">
+    <!-- Enemies section -->
+    <div>
         <h3>Enemies Available to Attack</h3>
         <div class="row enemyRow">
             <!-- Enemy Tiles after player chooses their player -->
@@ -50,11 +54,12 @@
         <!-- hidden div to hold dead char before reset -->
         <div class="dead-char hidden"></div>   
     </div>
+    <!-- Fight buttons section -->
     <div>
         <h3>Fight Section</h3>
         <button class="button attack-button">Attack</button>
     </div>
-    
+    <!-- Defender section with battle text -->
     <div class="">
         <h3>Defender</h3>
         <div class="row defenderRow">
