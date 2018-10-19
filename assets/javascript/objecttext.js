@@ -45,4 +45,4 @@ var characters = {
 let name = "#"
 
 
-console.log(characters.$("#obiWan").id);
+console.log(characters[$("#obiWan")][hp]);
