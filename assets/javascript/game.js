@@ -58,7 +58,6 @@ var defender = "";
 
 
 function playerSelection(clicked) {
-    // need to move contents of click function into this block
     // remove choice class from selected player to make green border
     $("#"+clicked.id).removeClass("choice").addClass("playerChoice");
     // take remaining 3 characters and add enemy class to make red
@@ -71,18 +70,20 @@ function enemySelection(clicked) {
     $("#result-text").empty();
     // only run code if defenderRow is empty. Keeps from 2 defenders being added
     if ( $(".defenderRow").children().length == 0 ) {
-        // set variable to enemy clicked
-        // var enemyChoice = $("#"+clicked);
         // move enemyChoice to defender row remove enemy class
         // and add defender class for styling and selection
         $("#"+clicked.id).removeClass("enemy").addClass("defender").appendTo(".defenderRow");
         // set defender to clicked object
         defender = window[clicked.id]; 
+        // make sure there's no message to select enemy
         $(".noEnemy").empty();
     }
 }
 function attackButton() {
-    // if defender row is empty alert no enemy to attack
+    // if defender row is empty ask user to choose an enemy
+    // else if all enemies have been defeated, ask user to click reset
+    // else if player is dead, ask user to click reset
+    // else run functions for gameplay
     if ( $(".defenderRow").children().length == 0 ) {
         $(".noEnemy").text("Please Choose An Enemy To Fight");
     } else if ( $(".dead-char").children().length == 3 ) {
@@ -154,7 +155,7 @@ function gameOver() {
     }
 }
 function resetHP() {
-    // set default hp
+    // set default hp for all characters
     obiWan.hp = obiWan.hpBase;
     $(obiWan.hpSelector).text(obiWan.hp);
     skywalker.hp = skywalker.hpBase;
@@ -165,6 +166,7 @@ function resetHP() {
     $(maul.hpSelector).text(obiWan.hp);
 }
 function resetAttack() {
+    // set default attack power for all characters
     obiWan.attack = obiWan.attackBase;
     skywalker.attack = skywalker.attackBase;
     sidious.attack = sidious.attackBase;
@@ -175,13 +177,14 @@ function resetButton() {
     $(".game-over-text").empty();
     // hide reset button
     $(".reset-button").addClass("hidden")
-    resetHP();
-    resetAttack();
+    resetHP(); //reset all characters hp
+    resetAttack(); //reset all characters attack
     // char and choice should be tiles only classes and add to player row.
     $(".char").removeClass().addClass("char choice").appendTo(".playerRow");
     playerChoice = "";
     defender = "";
 }
+
 
 // **************************************************
 //
@@ -209,6 +212,4 @@ $(document).ready(function() {
     $(".header").on("click", ".reset-button", function() {
         resetButton();
     });
-
-
 });
