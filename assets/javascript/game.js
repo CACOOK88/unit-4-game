@@ -197,7 +197,6 @@ $(document).ready(function() {
     // initially listen for click on a char tile
     $(".playerRow").on("click", ".choice", function() {
         playerSelection(this);
-        
     });
     // listen for click on enemy tile
     $(".enemyRow").on("click", ".enemy", function() {
